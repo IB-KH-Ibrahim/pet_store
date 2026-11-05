@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pet/featuser/authntcaion/presentation/log_in_screen.dart';
+import 'package:pet/featuser/auth/view/log_in_view.dart';
 
 
 void main() {

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet/main.dart';
 
 void showmessage(String message , Color color) {
-          masscontex.currentState!.showSnackBar(
+          publiccontex.currentState!.showSnackBar(
       SnackBar(
         content: Text(message),
         showCloseIcon: true,

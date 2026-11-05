@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// suffixIcon: IconButton(
-//                             icon: Icon(
-//                               value ? Icons.visibility_off : Icons.visibility,
-//                               color: const Color.fromARGB(255, 134, 66, 184),
-//                             ),
-//                             onPressed: () {
-//                               showpass.value = !value;
-//                             },
-//                           ),
-
 class CustomFormTextWidget extends StatelessWidget {
   final FocusNode myfocus;
   final FocusNode? nextfocus;
@@ -35,25 +25,34 @@ class CustomFormTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      focusNode: myfocus,
-      onFieldSubmitted: (value) =>
-          FocusScope.of(context).requestFocus(nextfocus),
-      keyboardType: typeinput,
-      controller: controller,
+    return Card(
+      child: TextFormField(
+        focusNode: myfocus,
+        onFieldSubmitted: (value) =>
+            FocusScope.of(context).requestFocus(nextfocus),
+        keyboardType: typeinput,
+        controller: controller,
 
-      obscureText: obscure ?? false,
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: const Color.fromARGB(255, 255, 255, 255),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color: Colors.white),
+        obscureText: obscure ?? false,
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: const Color.fromARGB(255, 255, 255, 255),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white, width: 1),
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+
+          hintText: hinttext,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          hintStyle: TextStyle(color: Colors.grey)
         ),
-
-        hintText: hinttext,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
       ),
     );
   }
