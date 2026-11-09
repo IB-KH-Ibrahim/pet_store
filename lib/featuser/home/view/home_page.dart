@@ -1,12 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet/core/widget/custom_form_text_widget.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
@@ -253,76 +250,6 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 5.w),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Row(
-                //         children: [
-                //           Icon(
-                //             Icons.discount,
-                //             color: const Color.fromARGB(255, 40, 96, 42),
-                //           ),
-                //           Text(
-                //             "Special Offers",
-                //             style: TextStyle(
-                //               fontSize: 17.sp,
-                //               fontWeight: FontWeight.bold,
-                //               color: const Color.fromARGB(255, 40, 96, 42),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //       Row(
-                //         children: [
-                //           Text(
-                //             "See All",
-                //             style: TextStyle(
-                //               color: const Color.fromARGB(255, 77, 150, 60),
-                //             ),
-                //           ),
-                //           Icon(
-                //             Icons.arrow_forward,
-                //             color: const Color.fromARGB(255, 77, 150, 60),
-                //           ),
-                //         ],
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Padding(
-                //   padding: EdgeInsetsGeometry.only(
-                //     top: 10.h,
-                //     left: 5.w,
-                //     right: 5.w,
-                //   ),
-                //   child: Container(
-                //     width: double.infinity,
-                //     height: 120.h,
-                      
-                //     decoration: BoxDecoration(
-                //       boxShadow: [
-                //         BoxShadow(
-                //           blurRadius: 50,
-                //           color: const Color.fromARGB(
-                //             199,
-                //             158,
-                //             158,
-                //             158,
-                //           ).withValues(alpha: 0.1),
-                //         ),
-                //       ],
-                //     ),
-                //     child: Card(
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(25.r),
-                //       ),
-                //       color: Colors.white,
-                //       elevation: 3,
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),

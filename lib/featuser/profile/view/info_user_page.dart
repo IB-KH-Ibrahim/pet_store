@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet/core/model/user_model/user_model.dart';
 import 'package:pet/core/routes.dart';
+import 'package:pet/featuser/profile/viwe_model/services/delete_user.dart';
+import 'package:pet/featuser/profile/viwe_model/services/get_user.dart';
 
 class InfoUserPage extends StatefulWidget {
   const InfoUserPage({super.key});
@@ -11,6 +14,7 @@ class InfoUserPage extends StatefulWidget {
 
 class _InfoUserPageState extends State<InfoUserPage> {
   final ValueNotifier<bool> isUpdate = ValueNotifier<bool>(false);
+  final UserModel user=GetUser.getUser()as UserModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +116,7 @@ class _InfoUserPageState extends State<InfoUserPage> {
                                       clipBehavior: Clip.antiAlias,
                                       child: Padding(
                                         padding: EdgeInsets.all(10.h),
-                                        child: Text("First Name"),
+                                        child: Text(user.parametersUser.firstName),
                                       ),
                                     ),
                                   ),
@@ -138,7 +142,7 @@ class _InfoUserPageState extends State<InfoUserPage> {
                                       clipBehavior: Clip.antiAlias,
                                       child: Padding(
                                         padding: EdgeInsets.all(10.h),
-                                        child: Text("Last Name"),
+                                        child: Text(user.parametersUser.lastName),
                                       ),
                                     ),
                                   ),
@@ -168,7 +172,7 @@ class _InfoUserPageState extends State<InfoUserPage> {
                                       clipBehavior: Clip.antiAlias,
                                       child: Padding(
                                         padding: EdgeInsets.all(10.h),
-                                        child: Text("First Name"),
+                                        child: Text(user.parametersUser.username),
                                       ),
                                     ),
                                   ),
@@ -194,7 +198,7 @@ class _InfoUserPageState extends State<InfoUserPage> {
                                       clipBehavior: Clip.antiAlias,
                                       child: Padding(
                                         padding: EdgeInsets.all(10.h),
-                                        child: Text("Last Name"),
+                                        child: Text(user.parametersUser.phone),
                                       ),
                                     ),
                                   ),
@@ -220,7 +224,7 @@ class _InfoUserPageState extends State<InfoUserPage> {
                                 child: Padding(
                                   padding: EdgeInsets.all(10.h),
                                   child: Text(
-                                    "user@gmal.com",
+                                  user.parametersUser.email,
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -291,7 +295,9 @@ class _InfoUserPageState extends State<InfoUserPage> {
                                   ),
                                 ),
 
-                                onPressed: () {},
+                                onPressed: () async {
+                                  await DeleteUser.deleteUser();
+                                },
 
                                 child: Center(
                                   child: Text(

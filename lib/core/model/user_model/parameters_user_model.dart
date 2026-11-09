@@ -5,8 +5,8 @@ class ParametersUser {
   final String email;
   final String password;
   final String phone;
-  final String? id;
-  final String? userStatus;
+  final int? id;
+  final int? userStatus;
   ParametersUser({
     required this.username,
     required this.firstName,

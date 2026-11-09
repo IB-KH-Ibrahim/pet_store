@@ -5,11 +5,12 @@ import 'package:pet/featuser/auth/view/log_in_view.dart';
 import 'package:pet/featuser/auth/view/reset_password_view.dart';
 import 'package:pet/featuser/auth/view/sign_up_view.dart';
 import 'package:pet/featuser/home/view/home_page.dart';
-import 'package:pet/featuser/home/view/info_user_page.dart';
+import 'package:pet/featuser/profile/view/info_user_page.dart';
 import 'package:pet/featuser/home/view/main_page.dart';
 import 'package:pet/featuser/home/view/profile_page.dart';
 import 'package:pet/featuser/home/view/store_page.dart';
-import 'package:pet/featuser/home/view/update_info.dart';
+import 'package:pet/featuser/profile/view/update_info.dart';
+import 'package:pet/featuser/splash/view/splash_view.dart';
 
 final GlobalKey<ScaffoldMessengerState> publiccontex = GlobalKey();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -36,7 +37,7 @@ void main() {
           scaffoldMessengerKey: publiccontex,
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
-          home: const LogInScreen(),
+          home: const SplashView(),
           routes: {
             AppRoutes.login: (context) => const LogInScreen(),
             AppRoutes.signup: (context) => const SignUpPage(),
@@ -47,6 +48,7 @@ void main() {
             AppRoutes.main: (context) => const MainPage(),
             AppRoutes.infuser: (context) => const InfoUserPage(),
             AppRoutes.updateuser: (context) => const UpdateInfo(),
+            AppRoutes.splash: (context) => const SplashView(),
           },
         );
       },

@@ -8,5 +8,6 @@ class AppRoutes {
   static const String main = '/main';
   static const String infuser = '/infuser';
   static const String updateuser = '/updateuser';
+  static const String splash = '/splash';
 
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet/core/routes.dart';
+import 'package:pet/featuser/home/view_model/log_out.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -120,34 +122,23 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 320.w,
+                    SizedBox(
+                      width: 350.w,
                       height: 60.h,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 50,
-                            color: const Color.fromARGB(
-                              199,
-                              158,
-                              158,
-                              158,
-                            ).withValues(alpha: 0.1),
-                          ),
-                        ],
-                      ),
                       child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.r),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        elevation: 5,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 3.h,
-                            horizontal: 10.w,
+                        elevation: 10,
+                        color: const Color.fromARGB(0, 255, 255, 255),
+                        shadowColor: const Color.fromARGB(68, 158, 158, 158),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(horizontal: 5.w),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
                           ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, AppRoutes.infuser);
+                          },
                           child: Row(
                             children: [
                               Icon(
@@ -160,12 +151,7 @@ class ProfilePage extends StatelessWidget {
                                 "Account Information",
                                 style: TextStyle(
                                   fontSize: 20.sp,
-                                  color: const Color.fromARGB(
-                                    255,
-                                    16,
-                                    75,
-                                    19,
-                                  ),
+                                  color: const Color.fromARGB(255, 16, 75, 19),
                                 ),
                               ),
                               Expanded(child: SizedBox()),
@@ -180,34 +166,21 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10.h),
-                    Container(
-                      width: 320.w,
+                    SizedBox(
+                      width: 350.w,
                       height: 60.h,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 50,
-                            color: const Color.fromARGB(
-                              199,
-                              158,
-                              158,
-                              158,
-                            ).withValues(alpha: 0.1),
-                          ),
-                        ],
-                      ),
                       child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.r),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        elevation: 5,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 3.h,
-                            horizontal: 10.w,
+                        elevation: 10,
+                        color: const Color.fromARGB(0, 255, 255, 255),
+                        shadowColor: const Color.fromARGB(76, 158, 158, 158),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(horizontal: 5.w),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
                           ),
+                          onPressed: () {},
                           child: Row(
                             children: [
                               Icon(
@@ -235,34 +208,24 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10.h),
-                    Container(
-                      width: 320.w,
+
+                    SizedBox(
+                      width: 350.w,
                       height: 60.h,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 50,
-                            color: const Color.fromARGB(
-                              199,
-                              158,
-                              158,
-                              158,
-                            ).withValues(alpha: 0.1),
-                          ),
-                        ],
-                      ),
                       child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.r),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        elevation: 5,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 3.h,
-                            horizontal: 10.w,
+                        elevation: 10,
+                        color: const Color.fromARGB(0, 255, 255, 255),
+                        shadowColor: const Color.fromARGB(67, 158, 158, 158),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(horizontal: 5.w),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
                           ),
+                          onPressed: ()async {
+                            await LogOut.logOut();
+                          },
                           child: Row(
                             children: [
                               Icon(
