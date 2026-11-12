@@ -9,7 +9,6 @@ class ApiString {
  static String stor="/stor/order/";
  static String storInventory="/stor/inventory";
  static String addOrder="/stor/order";
-//  static String createAccountWithList="/user/createWithList";
 
 
 

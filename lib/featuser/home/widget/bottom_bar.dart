@@ -36,6 +36,11 @@ class BottomBar extends StatelessWidget {
               selectedIcon: Icon(Icons.storefront),
               label: 'Store',
             ),
+            NavigationDestination(
+              icon: Icon(Icons.pets_outlined),
+              selectedIcon: Icon(Icons.pets),
+              label: 'Products',
+            ),
         
             NavigationDestination(
               icon: Icon(Icons.person_outline),

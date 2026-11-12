@@ -19,6 +19,8 @@ dependencies:
   clean_api_client: ^0.1.0
   flutter_secure_storage: ^11.2.0
   http: ^1.6.0
+  email_validator: ^3.0.0
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
@@ -31,9 +33,9 @@ flutter:
     - assets/
 
   fonts:
-    - family: Zeyada
+    - family: Nunito
       fonts:
-        - asset: assets/fonts/Zeyada-Regular.ttf
+        - asset: assets/fonts/Nunito-VariableFont_wght.ttf
 
 flutter_intl:
   enabled: true

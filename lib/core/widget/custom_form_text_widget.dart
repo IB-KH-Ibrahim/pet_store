@@ -10,6 +10,7 @@ class CustomFormTextWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final bool? obscure;
   final Widget prefixIcon;
+  final String? Function(String?)? validat;
 
   const new({
     super.key,
@@ -21,18 +22,20 @@ class CustomFormTextWidget extends StatelessWidget {
     this.suffixIcon,
     this.obscure,
     required this.prefixIcon,
+    this.validat,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator:validat,
         focusNode: myfocus,
         onFieldSubmitted: (value) =>
             FocusScope.of(context).requestFocus(nextfocus),
         keyboardType: typeinput,
         controller: controller,
-
         obscureText: obscure ?? false,
         decoration: InputDecoration(
           filled: true,
@@ -51,7 +54,7 @@ class CustomFormTextWidget extends StatelessWidget {
           hintText: hinttext,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          hintStyle: TextStyle(color: Colors.grey)
+          hintStyle: TextStyle(color: Colors.grey),
         ),
       ),
     );

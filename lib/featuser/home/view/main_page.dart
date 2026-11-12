@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pet/featuser/home/view/home_page.dart';
-import 'package:pet/featuser/home/view/profile_page.dart';
-import 'package:pet/featuser/home/view/store_page.dart';
+import 'package:pet/featuser/products/view/products_page.dart';
+import 'package:pet/featuser/profile/view/profile_page.dart';
 import 'package:pet/featuser/home/widget/bottom_bar.dart';
+import 'package:pet/featuser/store/view/store_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -15,6 +16,7 @@ class _MainPageState extends State<MainPage> {
   final List pages = [
     const HomePage(),
     const StorePage(),
+    const ProductsPage(),
     const ProfilePage(),
   ];
   int selectedIndex = 0;

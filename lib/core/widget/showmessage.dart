@@ -11,11 +11,12 @@ void showmessage(String message , Color color) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.r),
         ),
-        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
         behavior: SnackBarBehavior.floating,
-        duration: Duration(seconds: 3),
+        duration: Duration(seconds: 2),
         backgroundColor:color,
       ),
+    
     );
 
 

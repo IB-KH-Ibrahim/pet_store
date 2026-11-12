@@ -23,8 +23,9 @@ class LogOut {
         showmessage('Log Out Failed', Color.fromARGB(255, 197, 39, 39));
       }
     } catch (e) {
+      print( '${ApiString.baseUrl}${ApiString.logout}');
       print('Failed to delete account with status code: $e');
-      showmessage('Error deleting account', Colors.red);
+      showmessage('Error', Colors.red);
     }
   }
 }

@@ -8,16 +8,21 @@ import 'package:pet/core/widget/showmessage.dart';
 class GetUser {
   static Future<UserModel?> getUser() async {
     try {
-      final username = ScureStorage.getData(value: 'username');
+      final username = await ScureStorage.getData(value: 'username');
+      if (username == null) {
+        return null;
+      }
       final response = await ApiHttp.get(
-        url: '${ApiString.baseUrl}${ApiString.user}?username=$username',
+        url: '${ApiString.baseUrl}${ApiString.user}/$username',
       );
-      if (response['code'] == 200) {
+
+      if (response != null && response['id'] != null) {
         return UserModel.fromJson(response);
-      }else{showmessage('Error error', Colors.red);}
+      } else {
+        showmessage('User Not Found', const Color.fromARGB(255, 244, 181, 54));
+      }
     } catch (e) {
-      print('Failed to retrieve user data with status code: $e');
-      showmessage('Error error', Colors.red);
+      throw Exception(e);
     }
     return null;
   }

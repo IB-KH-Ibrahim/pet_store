@@ -1,13 +1,12 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pet/core/widget/custom_form_text_widget.dart';
+import 'package:pet/core/widget/popular_products.dart';
+import 'package:pet/featuser/home/widget/side_bar.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    final searchController = TextEditingController();
-    final focussearch = FocusNode();
     return Scaffold(
       body: Stack(
         children: [
@@ -43,7 +42,7 @@ class HomePage extends StatelessWidget {
                         size: 30.h,
                       ),
                     ),
-                      
+
                     Padding(
                       padding: EdgeInsetsGeometry.directional(
                         start: 5.w,
@@ -52,7 +51,7 @@ class HomePage extends StatelessWidget {
                       child: Text(
                         "PetStore",
                         style: TextStyle(
-                          fontSize: 30.sp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.w800,
                           color: const Color.fromARGB(255, 16, 75, 19),
                         ),
@@ -87,24 +86,6 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                    left: 10.w,
-                    right: 10.w,
-                    top: 10.h,
-                    // bottom: 3.h,
-                  ),
-                  child: CustomFormTextWidget(
-                    myfocus: focussearch,
-                    controller: searchController,
-                    typeinput: TextInputType.text,
-                    hinttext: 'Search for a product',
-                    prefixIcon: Icon(
-                      Icons.search_rounded,
-                      color: const Color.fromARGB(255, 16, 75, 19),
-                    ),
-                  ),
-                ),
-                Padding(
                   padding: EdgeInsetsGeometry.only(
                     top: 10.h,
                     left: 5.w,
@@ -112,14 +93,14 @@ class HomePage extends StatelessWidget {
                   ),
                   child: Container(
                     width: double.infinity,
-                    height: 120.h,
-                      
+                    height: 175.h,
+
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 50,
                           color: const Color.fromARGB(
-                            199,
+                            186,
                             158,
                             158,
                             158,
@@ -127,51 +108,63 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.r),
-                      ),
-                      color: Colors.white,
-                      elevation: 10,
-                    ),
-                  ),
-                ),
-                      
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            width: 80.w,
-                            height: 80.h,
-                      
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 50,
-                                  color: const Color.fromARGB(
-                                    199,
-                                    158,
-                                    158,
-                                    158,
-                                  ).withValues(alpha: 0.1),
+                    child: Stack(
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          height: double.infinity,
+                          child: Image.asset(
+                            'assets/imag_home.png',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+
+                        Padding(
+                          padding: EdgeInsetsDirectional.only(
+                            start: 20.w,
+                            top: 118.h,
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color.fromARGB(
+                                255,
+                                18,
+                                109,
+                                23,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.r),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Shop Now",
+                                  style: TextStyle(
+                                    fontFamily: "Nunito",
+                                    color: Colors.white,
+                                    fontSize: 10.sp,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward,
+                                  color: Colors.white,
+                                  size: 20.w,
                                 ),
                               ],
                             ),
-                            child: Card(
-                              shape: CircleBorder(),
-                              clipBehavior: Clip.antiAlias,
-                              color: Colors.white,
-                              elevation: 5,
-                            ),
                           ),
-                          Text("data"),
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  child: SideBar(),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -212,43 +205,8 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 5.w,
-                    vertical: 5.h,
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 150.w,
-                            height: 150.h,
-                      
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 50,
-                                  color: const Color.fromARGB(
-                                    199,
-                                    158,
-                                    158,
-                                    158,
-                                  ).withValues(alpha: 0.1),
-                                ),
-                              ],
-                            ),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.r),
-                              ),
-                              color: Colors.white,
-                              elevation: 10,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+                  child: ViewProducts(),
                 ),
               ],
             ),
@@ -258,3 +216,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+

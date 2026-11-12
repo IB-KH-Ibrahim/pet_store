@@ -7,31 +7,28 @@ import 'package:pet/featuser/auth/view/sign_up_view.dart';
 import 'package:pet/featuser/home/view/home_page.dart';
 import 'package:pet/featuser/profile/view/info_user_page.dart';
 import 'package:pet/featuser/home/view/main_page.dart';
-import 'package:pet/featuser/home/view/profile_page.dart';
-import 'package:pet/featuser/home/view/store_page.dart';
+import 'package:pet/featuser/profile/view/profile_page.dart';
 import 'package:pet/featuser/profile/view/update_info.dart';
 import 'package:pet/featuser/splash/view/splash_view.dart';
+import 'package:pet/featuser/store/view/order_page.dart';
+import 'package:pet/featuser/store/view/store_page.dart';
 
 final GlobalKey<ScaffoldMessengerState> publiccontex = GlobalKey();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() {
   runApp(
-   ScreenUtilInit(
+    ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (context, child) {
         return MaterialApp(
-          
           theme: ThemeData(
             primarySwatch: Colors.green,
             colorScheme: ColorScheme.fromSwatch().copyWith(
               secondary: Colors.greenAccent,
               primary: Colors.green,
-              
-            
             ),
-            fontFamily: 'LibreBaskerville' ,
-            scaffoldBackgroundColor:const Color.fromARGB(255, 245, 244, 239),
-            
+            fontFamily: 'Nunito',
+            scaffoldBackgroundColor: const Color.fromARGB(255, 245, 244, 239),
           ),
 
           scaffoldMessengerKey: publiccontex,
@@ -49,10 +46,12 @@ void main() {
             AppRoutes.infuser: (context) => const InfoUserPage(),
             AppRoutes.updateuser: (context) => const UpdateInfo(),
             AppRoutes.splash: (context) => const SplashView(),
+            AppRoutes.order: (context) => const OrderPage(),
           },
         );
       },
     ),
   );
 }
+
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet/core/api/api_http.dart';
 import 'package:pet/core/routes.dart';
-import 'package:pet/featuser/home/view_model/log_out.dart';
+import 'package:pet/core/view_model/get_user.dart';
+import 'package:pet/featuser/profile/viwe_model/services/log_out.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -180,7 +182,8 @@ class ProfilePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.r),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                          },
                           child: Row(
                             children: [
                               Icon(
@@ -223,7 +226,7 @@ class ProfilePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.r),
                             ),
                           ),
-                          onPressed: ()async {
+                          onPressed: () async {
                             await LogOut.logOut();
                           },
                           child: Row(

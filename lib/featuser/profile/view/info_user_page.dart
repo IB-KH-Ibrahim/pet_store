@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet/core/model/user_model/user_model.dart';
-import 'package:pet/core/routes.dart';
-import 'package:pet/featuser/profile/viwe_model/services/delete_user.dart';
-import 'package:pet/featuser/profile/viwe_model/services/get_user.dart';
+import 'package:pet/core/view_model/get_user.dart';
+import 'package:pet/featuser/profile/viwe_model/widget/coustom_form_user_information.dart';
 
 class InfoUserPage extends StatefulWidget {
   const InfoUserPage({super.key});
@@ -13,8 +12,13 @@ class InfoUserPage extends StatefulWidget {
 }
 
 class _InfoUserPageState extends State<InfoUserPage> {
-  final ValueNotifier<bool> isUpdate = ValueNotifier<bool>(false);
-  final UserModel user=GetUser.getUser()as UserModel;
+  late final Future<UserModel?> response;
+  @override
+  void initState() {
+    super.initState();
+    response = GetUser.getUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,231 +93,26 @@ class _InfoUserPageState extends State<InfoUserPage> {
                 child: SizedBox(
                   width: 500.w,
                   height: 400.h,
-                  child: Card(
-                    elevation: 0.1,
-                    color: const Color.fromARGB(104, 255, 255, 255),
-                    shadowColor: Colors.black.withValues(alpha: 0.2),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 10.h),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "First Name:",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15.sp,
-                                    ),
-                                  ),
-                                  ConstrainedBox(
-                                    constraints: BoxConstraints(
-                                      minWidth: 100.w,
-                                    ),
-                                    child: Card(
-                                      clipBehavior: Clip.antiAlias,
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.h),
-                                        child: Text(user.parametersUser.firstName),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            // Expanded(child: SizedBox()),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "Last Name:",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15.sp,
-                                    ),
-                                  ),
-                                  ConstrainedBox(
-                                    constraints: BoxConstraints(
-                                      minWidth: 100.w,
-                                    ),
-                                    child: Card(
-                                      clipBehavior: Clip.antiAlias,
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.h),
-                                        child: Text(user.parametersUser.lastName),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20.h),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "User Name:",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15.sp,
-                                    ),
-                                  ),
-                                  ConstrainedBox(
-                                    constraints: BoxConstraints(
-                                      minWidth: 100.w,
-                                    ),
-                                    child: Card(
-                                      clipBehavior: Clip.antiAlias,
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.h),
-                                        child: Text(user.parametersUser.username),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            // Expanded(child: SizedBox()),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "Phone:",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15.sp,
-                                    ),
-                                  ),
-                                  ConstrainedBox(
-                                    constraints: BoxConstraints(
-                                      minWidth: 100.w,
-                                    ),
-                                    child: Card(
-                                      clipBehavior: Clip.antiAlias,
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.h),
-                                        child: Text(user.parametersUser.phone),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 5.h),
-                        Column(
-                          children: [
-                            Text(
-                              "Email:",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 15.sp,
-                              ),
-                            ),
-                            ConstrainedBox(
-                              constraints: BoxConstraints(minWidth: 200.w),
-                              child: Card(
-                                clipBehavior: Clip.antiAlias,
-                                child: Padding(
-                                  padding: EdgeInsets.all(10.h),
-                                  child: Text(
-                                  user.parametersUser.email,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Expanded(child: SizedBox()),
-                        Padding(
-                          padding: EdgeInsetsGeometry.symmetric(
-                            horizontal: 10.w,
-                            vertical: 10.h,
-                          ),
-                          child: ValueListenableBuilder(
-                            valueListenable: isUpdate,
-                            builder: (context, value, child) {
-                              return ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color.fromARGB(
-                                    255,
-                                    226,
-                                    176,
-                                    13,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                  ),
-                                ),
+                  //
+                  child: FutureBuilder(
+                    future: response,
+                    builder: (context, asyncSnapshot) {
+                      if (asyncSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      if (asyncSnapshot.hasError) {
+                        return const Center(
+                          child: Text("Something went wrong"),
+                        );
+                      }
 
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    AppRoutes.updateuser,
-                                  );
-                                },
-
-                                child: Center(
-                                  child: Text(
-                                    "Update",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsGeometry.symmetric(
-                            horizontal: 10.w,
-                            vertical: 10.h,
-                          ),
-                          child: ValueListenableBuilder(
-                            valueListenable: isUpdate,
-                            builder: (context, value, child) {
-                              return ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color.fromARGB(
-                                    255,
-                                    156,
-                                    33,
-                                    33,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                  ),
-                                ),
-
-                                onPressed: () async {
-                                  await DeleteUser.deleteUser();
-                                },
-
-                                child: Center(
-                                  child: Text(
-                                    "Delete Account",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
+                      final user = asyncSnapshot.data;
+                      if (user == null) {
+                        return const Text("User not found");
+                      }
+                      return CoustomFormUserInformation(user: user);
+                    },
                   ),
                 ),
               ),
